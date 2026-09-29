@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { X, CheckCircle, AlertTriangle, Check, ArrowRight } from 'lucide-react';
+import { X, CheckCircle, AlertTriangle, Check, ArrowRight, ShieldCheck, CreditCard, Award } from 'lucide-react';
 
 interface SimulatorModalProps {
   projectId: string;
@@ -8,24 +8,27 @@ interface SimulatorModalProps {
 
 export function ProjectSimulators({ projectId, onClose }: SimulatorModalProps) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-950/80 backdrop-blur-sm animate-fade-in">
-      <div className="relative w-full max-w-xl bg-neutral-900 border border-neutral-800 rounded-xl p-6 shadow-2xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#10182B]/85 backdrop-blur-md animate-fade-in">
+      <div className="relative w-full max-w-xl bg-gradient-to-b from-[#18254A] to-[#10182B] border border-[#3949AB]/50 rounded-2xl p-6 sm:p-7 shadow-2xl overflow-hidden text-white">
         {/* Modal Header */}
-        <div className="flex items-center justify-between pb-4 mb-4 border-b border-neutral-800">
-          <div>
-            <div className="text-[11px] font-mono text-neutral-400 uppercase tracking-widest">
-              Live Logic Sandbox
+        <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#3949AB]/30">
+          <div className="flex items-center gap-2.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#4F7CFF] shadow-[0_0_8px_#4F7CFF]" />
+            <div>
+              <div className="text-[11px] font-mono text-[#22D3EE] uppercase tracking-widest font-bold">
+                Live Interactive Logic Sandbox
+              </div>
+              <h3 className="text-lg font-bold text-white mt-0.5">
+                {projectId === 'voter-eligibility' && 'Voter Eligibility Calculator'}
+                {projectId === 'atm-management' && 'ATM Management System'}
+                {projectId === 'grade-calculator' && 'Student Grade Calculator'}
+              </h3>
             </div>
-            <h3 className="text-lg font-semibold text-white mt-0.5">
-              {projectId === 'voter-eligibility' && 'Voter Eligibility Calculator'}
-              {projectId === 'atm-management' && 'ATM Management System'}
-              {projectId === 'grade-calculator' && 'Student Grade Calculator'}
-            </h3>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 text-neutral-400 hover:text-white rounded-md hover:bg-neutral-800 transition-colors"
+            className="p-2 text-slate-300 hover:text-white rounded-xl hover:bg-[#18254A] transition-colors border border-transparent hover:border-[#3949AB]/40 cursor-pointer"
             aria-label="Close Simulator"
           >
             <X className="w-5 h-5" />
@@ -38,14 +41,14 @@ export function ProjectSimulators({ projectId, onClose }: SimulatorModalProps) {
         {projectId === 'grade-calculator' && <GradeCalculatorSimulator />}
 
         {/* Modal Footer */}
-        <div className="pt-4 mt-5 border-t border-neutral-800 flex items-center justify-between text-xs text-neutral-500">
-          <span>Python algorithmic logic ported directly to client sandbox</span>
+        <div className="pt-4 mt-6 border-t border-[#3949AB]/30 flex items-center justify-between text-xs text-slate-300">
+          <span className="font-mono text-[11px] text-slate-400">Pure Python algorithmic logic executed client-side</span>
           <button
             type="button"
             onClick={onClose}
-            className="px-3 py-1.5 rounded bg-neutral-800 text-neutral-300 hover:text-white transition-colors"
+            className="px-4 py-2 rounded-xl bg-[#18254A] border border-[#3949AB]/50 text-slate-200 hover:text-white hover:border-[#4F7CFF] transition-all font-semibold cursor-pointer"
           >
-            Close
+            Close Sandbox
           </button>
         </div>
       </div>
@@ -64,15 +67,15 @@ function VoterCalculatorSimulator() {
 
   return (
     <div className="space-y-4 text-xs">
-      <p className="text-neutral-400">
-        Test the multi-branch conditional logic verifying voter eligibility parameters.
+      <p className="text-slate-300">
+        Test the multi-branch conditional validation algorithm governing statutory voter eligibility.
       </p>
 
-      <div className="space-y-3 bg-neutral-950/60 p-4 rounded-lg border border-neutral-800">
+      <div className="space-y-3.5 bg-[#0B1120] p-4 rounded-xl border border-[#4F7CFF]/30">
         <div>
-          <div className="flex justify-between mb-1.5 text-neutral-300 font-medium">
+          <div className="flex justify-between mb-2 text-slate-200 font-medium">
             <span>Applicant Age:</span>
-            <span className="font-mono text-white text-sm">{age} years</span>
+            <span className="font-mono text-[#4F7CFF] text-sm font-bold">{age} years</span>
           </div>
           <input
             type="range"
@@ -80,64 +83,64 @@ function VoterCalculatorSimulator() {
             max={90}
             value={age}
             onChange={(e) => setAge(Number(e.target.value))}
-            className="w-full accent-neutral-200 cursor-pointer"
+            className="w-full accent-[#4F7CFF] cursor-pointer"
           />
-          <div className="flex justify-between text-[10px] text-neutral-500 font-mono mt-1">
-            <span>12</span>
-            <span>18 (Legal Minimum)</span>
-            <span>90</span>
+          <div className="flex justify-between text-[10px] text-slate-400 font-mono mt-1">
+            <span>12 years</span>
+            <span className="text-[#22D3EE] font-bold">18 (Statutory Threshold)</span>
+            <span>90 years</span>
           </div>
         </div>
 
         <div className="grid grid-cols-2 gap-3 pt-2">
-          <label className="flex items-center gap-2 text-neutral-300 cursor-pointer">
+          <label className="flex items-center gap-2 text-slate-200 cursor-pointer">
             <input
               type="checkbox"
               checked={isCitizen}
               onChange={(e) => setIsCitizen(e.target.checked)}
-              className="rounded bg-neutral-800 border-neutral-700 text-neutral-100"
+              className="rounded bg-[#18254A] border-[#3949AB] text-[#4F7CFF] focus:ring-0"
             />
-            <span>Citizen Status</span>
+            <span>Certified Citizen</span>
           </label>
 
-          <label className="flex items-center gap-2 text-neutral-300 cursor-pointer">
+          <label className="flex items-center gap-2 text-slate-200 cursor-pointer">
             <input
               type="checkbox"
               checked={hasVoterId}
               onChange={(e) => setHasVoterId(e.target.checked)}
-              className="rounded bg-neutral-800 border-neutral-700 text-neutral-100"
+              className="rounded bg-[#18254A] border-[#3949AB] text-[#4F7CFF] focus:ring-0"
             />
-            <span>Registered on Electoral Roll</span>
+            <span>Enrolled on Registry</span>
           </label>
         </div>
       </div>
 
       {/* Result feedback */}
       <div
-        className={`p-4 rounded-lg border flex items-start gap-3 ${
+        className={`p-4 rounded-xl border flex items-start gap-3 ${
           canVoteImmediately
-            ? 'bg-emerald-950/20 border-emerald-900/60 text-emerald-300'
+            ? 'bg-[#27AE78]/15 border-[#27AE78]/50 text-[#27AE78]'
             : isEligible
-            ? 'bg-amber-950/20 border-amber-900/60 text-amber-300'
-            : 'bg-red-950/20 border-red-900/60 text-red-300'
+            ? 'bg-[#E4A853]/15 border-[#E4A853]/50 text-[#E4A853]'
+            : 'bg-[#E87961]/15 border-[#E87961]/50 text-[#E87961]'
         }`}
       >
         {canVoteImmediately ? (
-          <CheckCircle className="w-5 h-5 shrink-0 text-emerald-400 mt-0.5" />
+          <CheckCircle className="w-5 h-5 shrink-0 text-[#27AE78] mt-0.5" />
         ) : (
           <AlertTriangle className="w-5 h-5 shrink-0 mt-0.5" />
         )}
         <div>
-          <div className="font-semibold text-sm">
+          <div className="font-bold text-sm">
             {canVoteImmediately
-              ? 'Status: Fully Eligible to Vote'
+              ? 'Status: Fully Eligible to Vote in Elections'
               : isEligible
-              ? 'Status: Age & Citizen Criteria Met (Registration Required)'
-              : 'Status: Ineligible to Vote'}
+              ? 'Status: Age & Citizen Criteria Met (Registration Form Required)'
+              : 'Status: Ineligible Under Electoral Laws'}
           </div>
-          <div className="mt-1 text-xs opacity-90 leading-relaxed">
+          <div className="mt-1 text-xs opacity-90 leading-relaxed text-slate-200">
             {age < 18 && `Applicant is currently ${age}. Must wait ${18 - age} year(s) until legal voting age.`}
-            {!isCitizen && ' Constitutional voting rights require certified citizenship.'}
+            {!isCitizen && ' Constitutional voting rights require legal citizenship credentials.'}
             {isEligible && !hasVoterId && ' Age and citizenship validated. Next step: complete registration form at local electoral office.'}
             {canVoteImmediately && ' Verified against statutory age guidelines and electoral enrollment status.'}
           </div>
@@ -189,16 +192,18 @@ function AtmSystemSimulator() {
 
   return (
     <div className="space-y-4 text-xs">
-      <div className="p-4 rounded-lg bg-neutral-950/80 border border-neutral-800 flex items-center justify-between">
+      <div className="p-4 rounded-xl bg-[#0B1120] border border-[#E4A853]/40 flex items-center justify-between">
         <div>
-          <div className="text-[11px] font-mono text-neutral-400">Account Balance</div>
-          <div className="text-xl font-bold font-mono text-emerald-400 mt-0.5">
+          <div className="text-[11px] font-mono text-[#E4A853] font-bold uppercase tracking-wider">
+            Verified Account Balance
+          </div>
+          <div className="text-2xl font-bold font-mono text-[#E4A853] mt-0.5">
             ₹{balance.toFixed(2)}
           </div>
         </div>
         <div className="text-right">
-          <div className="text-[11px] font-mono text-neutral-500">Security State</div>
-          <span className="text-[11px] text-emerald-400 font-mono">PIN Validated</span>
+          <div className="text-[11px] font-mono text-slate-400">Security State</div>
+          <span className="text-[11px] text-[#27AE78] font-mono font-bold">● PIN Validated</span>
         </div>
       </div>
 
@@ -208,36 +213,36 @@ function AtmSystemSimulator() {
           placeholder="Enter amount (e.g. 100)"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
-          className="flex-1 bg-neutral-950 border border-neutral-800 rounded-md px-3 py-2 text-white font-mono placeholder:text-neutral-600 focus:outline-none focus:border-neutral-600 text-xs"
+          className="flex-1 bg-[#0B1120] border border-[#3949AB]/50 rounded-xl px-3.5 py-2 text-white font-mono placeholder:text-slate-500 focus:outline-none focus:border-[#E4A853] text-xs"
         />
         <button
           type="button"
           onClick={handleDeposit}
-          className="px-3.5 py-2 rounded-md bg-neutral-800 text-neutral-200 hover:text-white hover:bg-neutral-700 transition-colors font-medium"
+          className="px-4 py-2 rounded-xl bg-[#18254A] border border-[#3949AB]/50 text-slate-200 hover:text-white hover:bg-[#3949AB] transition-colors font-bold cursor-pointer"
         >
           Deposit
         </button>
         <button
           type="button"
           onClick={handleWithdraw}
-          className="px-3.5 py-2 rounded-md bg-neutral-100 text-neutral-900 hover:bg-white transition-colors font-medium"
+          className="px-4 py-2 rounded-xl bg-[#E4A853] text-[#10131A] hover:brightness-110 transition-colors font-bold cursor-pointer shadow-md"
         >
           Withdraw
         </button>
       </div>
 
       {feedback && (
-        <div className="p-2.5 rounded bg-neutral-800/60 border border-neutral-700 text-neutral-200 font-mono text-[11px]">
+        <div className="p-2.5 rounded-lg bg-[#18254A]/80 border border-[#3949AB]/50 text-slate-200 font-mono text-[11px]">
           {feedback}
         </div>
       )}
 
       {/* Mini statement log */}
       <div>
-        <div className="text-[11px] font-mono text-neutral-400 uppercase tracking-wider mb-1.5">
+        <div className="text-[11px] font-mono text-[#E4A853] uppercase tracking-wider mb-1.5 font-bold">
           Mini-Statement Ledger:
         </div>
-        <div className="p-3 rounded-lg bg-neutral-950 border border-neutral-800/80 font-mono text-[11px] text-neutral-400 space-y-1">
+        <div className="p-3.5 rounded-xl bg-[#0B1120] border border-[#3949AB]/40 font-mono text-[11px] text-slate-300 space-y-1.5">
           {history.map((log, i) => (
             <div key={i} className="truncate">
               › {log}
@@ -296,14 +301,14 @@ function GradeCalculatorSimulator() {
 
   return (
     <div className="space-y-4 text-xs">
-      <p className="text-neutral-400">
-        Adjust course marks (0–100) to see dynamic aggregate GPA, classification, and boundary logic.
+      <p className="text-slate-300">
+        Adjust course marks (0–100) to see dynamic aggregate GPA, classification, and grade boundary logic.
       </p>
 
-      <div className="space-y-2 bg-neutral-950/60 p-3.5 rounded-lg border border-neutral-800">
+      <div className="space-y-2.5 bg-[#0B1120] p-4 rounded-xl border border-[#E87961]/30">
         {courses.map((course, i) => (
           <div key={course.name} className="flex items-center justify-between gap-3">
-            <span className="text-neutral-300 font-medium">{course.name}</span>
+            <span className="text-slate-200 font-medium">{course.name}</span>
             <div className="flex items-center gap-2">
               <input
                 type="number"
@@ -311,31 +316,31 @@ function GradeCalculatorSimulator() {
                 max={100}
                 value={course.marks}
                 onChange={(e) => updateMark(i, parseInt(e.target.value))}
-                className="w-16 bg-neutral-900 border border-neutral-700 rounded px-2 py-1 text-center font-mono text-white text-xs"
+                className="w-16 bg-[#18254A] border border-[#E87961]/50 rounded-lg px-2 py-1 text-center font-mono text-white text-xs font-bold"
               />
-              <span className="text-[11px] text-neutral-500 font-mono">/ 100</span>
+              <span className="text-[11px] text-slate-400 font-mono">/ 100</span>
             </div>
           </div>
         ))}
       </div>
 
       {/* Aggregate Output */}
-      <div className="p-4 rounded-lg bg-neutral-950 border border-neutral-800 grid grid-cols-3 gap-3 text-center">
+      <div className="p-4 rounded-xl bg-[#0B1120] border border-[#E87961]/40 grid grid-cols-3 gap-3 text-center">
         <div>
-          <div className="text-[10px] font-mono text-neutral-500">Average %</div>
-          <div className="text-base font-bold font-mono text-white mt-0.5">
+          <div className="text-[10px] font-mono text-slate-400 uppercase">Average %</div>
+          <div className="text-lg font-bold font-mono text-white mt-0.5">
             {average.toFixed(1)}%
           </div>
         </div>
         <div>
-          <div className="text-[10px] font-mono text-neutral-500">Letter Grade</div>
-          <div className="text-base font-bold font-mono text-emerald-400 mt-0.5">
+          <div className="text-[10px] font-mono text-[#E87961] uppercase font-bold">Grade (GPA)</div>
+          <div className="text-lg font-extrabold font-mono text-[#E87961] mt-0.5">
             {grade} ({gpa.toFixed(1)})
           </div>
         </div>
         <div>
-          <div className="text-[10px] font-mono text-neutral-500">Classification</div>
-          <div className="text-xs font-semibold text-neutral-300 mt-1 truncate">
+          <div className="text-[10px] font-mono text-[#27AE78] uppercase font-bold">Classification</div>
+          <div className="text-xs font-bold text-[#27AE78] mt-1 truncate">
             {status}
           </div>
         </div>

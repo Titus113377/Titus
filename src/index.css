@@ -4,6 +4,20 @@
   :root {
     --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    /* Primary Color Palette */
+    --color-deep-navy: #10182B;
+    --color-midnight-indigo: #18254A;
+    --color-royal-indigo: #3949AB;
+    --color-creative-blue: #4F7CFF;
+    --color-teal: #16A394;
+    --color-emerald: #27AE78;
+    --color-amber: #E4A853;
+    --color-coral: #E87961;
+    --color-cream: #F5F1E8;
+    --color-soft-white: #FAFAF7;
+    --color-dark-text: #10131A;
+    --color-muted-text: #667085;
   }
 
   body {
@@ -16,26 +30,171 @@
   }
 }
 
+/* Custom Gradients */
+.gradient-navy-indigo {
+  background: linear-gradient(135deg, #10182B 0%, #18254A 60%, #3949AB 100%);
+}
+
+.gradient-indigo-blue {
+  background: linear-gradient(135deg, #3949AB 0%, #4F7CFF 100%);
+}
+
+.gradient-blue-teal {
+  background: linear-gradient(135deg, #4F7CFF 0%, #16A394 100%);
+}
+
+.gradient-teal-emerald {
+  background: linear-gradient(135deg, #16A394 0%, #27AE78 100%);
+}
+
+.gradient-amber-coral {
+  background: linear-gradient(135deg, #E4A853 0%, #E87961 100%);
+}
+
+.gradient-waste2value {
+  background: linear-gradient(145deg, #083B3A 0%, #0F5C55 40%, #16A394 75%, #27AE78 100%);
+}
+
+/* Gradient Text Utilities */
+.text-gradient-blue-teal {
+  background: linear-gradient(135deg, #4F7CFF 0%, #22D3EE 50%, #16A394 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-indigo-blue {
+  background: linear-gradient(135deg, #6366F1 0%, #4F7CFF 60%, #38BDF8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-teal-emerald {
+  background: linear-gradient(135deg, #16A394 0%, #27AE78 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-amber-coral {
+  background: linear-gradient(135deg, #E4A853 0%, #E87961 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Atmospheric Glows */
+.glow-blue {
+  box-shadow: 0 0 40px -10px rgba(79, 124, 255, 0.35);
+}
+
+.glow-teal {
+  box-shadow: 0 0 40px -10px rgba(22, 163, 148, 0.35);
+}
+
+.glow-amber {
+  box-shadow: 0 0 40px -10px rgba(228, 168, 83, 0.35);
+}
+
+.glow-coral {
+  box-shadow: 0 0 40px -10px rgba(232, 121, 97, 0.35);
+}
+
+/* Scanning Beam Animation */
+@keyframes scanSweep {
+  0% {
+    top: -10%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
+}
+
+.animate-scan-sweep {
+  animation: scanSweep 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Floating animation */
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float-slow {
+  animation: subtleFloat 5s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: subtleFloat 6s ease-in-out 1.5s infinite;
+}
+
 /* Subtle custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #10182B;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.2);
+  background: #3949AB;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(148, 163, 184, 0.4);
+  background: #4F7CFF;
 }
 
 /* Focus outline accessibility */
 :focus-visible {
-  outline: 2px solid #64748b;
+  outline: 2px solid #4F7CFF;
   outline-offset: 2px;
+}
+
+/* Refined Hero Sequential Entrance Animations */
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.animate-hero-badge {
+  animation: heroFadeUp 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-hero-headline {
+  animation: heroFadeUp 600ms cubic-bezier(0.16, 1, 0.3, 1) 120ms both;
+}
+
+.animate-hero-subtitle {
+  animation: heroFadeUp 600ms cubic-bezier(0.16, 1, 0.3, 1) 240ms both;
+}
+
+.animate-hero-ctas {
+  animation: heroFadeUp 600ms cubic-bezier(0.16, 1, 0.3, 1) 360ms both;
+}
+
+.animate-hero-meta {
+  animation: heroFadeUp 600ms cubic-bezier(0.16, 1, 0.3, 1) 480ms both;
+}
+
+.animate-hero-visual {
+  animation: heroFadeUp 750ms cubic-bezier(0.16, 1, 0.3, 1) 200ms both;
 }
 
 /* Reduced motion support */
@@ -47,4 +206,5 @@
     scroll-behavior: auto !important;
   }
 }
+
 

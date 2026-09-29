@@ -16,6 +16,7 @@ import { CurrentlyExploring } from './components/CurrentlyExploring';
 import { Philosophy } from './components/Philosophy';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { CustomCursor } from './components/CustomCursor';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -39,44 +40,47 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 flex flex-col font-sans selection:bg-neutral-800 selection:text-white">
+    <div className="min-h-screen bg-[#10182B] text-slate-100 flex flex-col font-sans selection:bg-[#4F7CFF] selection:text-white">
+      {/* Desktop Custom Cursor */}
+      <CustomCursor />
+
       {/* Sticky Top Bar Contract Navigation */}
       <Navbar activeSection={activeSection} />
 
       {/* Main Content Area */}
       <main className="flex-1">
-        {/* 1. Hero Section */}
+        {/* 1. Hero Section (Deep Navy / Indigo / Blue / Teal) */}
         <Hero />
 
-        {/* 2. Quick Status & Focus Cards */}
+        {/* 2. Quick Status & Focus Cards (Cream / Colored Indicators) */}
         <QuickProfile />
 
-        {/* 3. About Section */}
+        {/* 3. About Section (Soft Cream / Editorial / Blue & Teal Highlights) */}
         <About />
 
-        {/* 4. Skills & Technologies */}
+        {/* 4. Skills & Technologies (Midnight Indigo / Constellation) */}
         <Skills />
 
-        {/* 5. Projects Section (Featuring Waste2Value AI & Python Simulators) */}
+        {/* 5. Projects Section (Cream / Flagship Emerald-Teal + Color Identities) */}
         <Projects />
 
-        {/* 6. Hackathons & Ideathons */}
+        {/* 6. Hackathons & Ideathons (Deep Indigo / Warm Amber / Pipeline) */}
         <Hackathons />
 
-        {/* 7. Learning Journey Roadmap */}
+        {/* 7. Learning Journey (Deep Navy / Gradient Spine: Blue → Indigo → Teal → Emerald → Amber) */}
         <Journey />
 
-        {/* 8. Currently Exploring */}
+        {/* 8. Currently Exploring (Midnight Indigo / 6 Floating Colored Cards) */}
         <CurrentlyExploring />
 
-        {/* 9. Personal Operating Philosophy */}
+        {/* 9. Personal Operating Philosophy (Deep Navy → Indigo Art Poster) */}
         <Philosophy />
 
-        {/* 10. Contact / Connect */}
+        {/* 10. Contact / Connect (Indigo → Blue → Teal Radiant Gradient) */}
         <Contact />
       </main>
 
-      {/* 11. Footer */}
+      {/* 11. Footer (Deep Indigo / Gradient Line) */}
       <Footer />
     </div>
   );
